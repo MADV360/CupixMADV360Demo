@@ -13,6 +13,8 @@ import UIKit
     
     @IBOutlet weak var connectButton:UIButton!
     @IBOutlet weak var shootButton:UIButton!
+    @IBOutlet weak var voltageLabel:UILabel!
+    @IBOutlet weak var storageLabel:UILabel!
     
     var device:MVCameraDevice?
     
@@ -53,7 +55,7 @@ import UIKit
     }
     
     func didVoltagePercentChanged(_ percent: Int32, isCharging: Bool) {
-        
+        self.voltageLabel.text = "Voltage:\(percent)%\(isCharging ? " Charging":"")";
     }
     
     func didSwitchCameraModeFail(_ errMsg: String!) {
@@ -93,7 +95,15 @@ import UIKit
     }
     
     func didStorageMountedStateChanged(_ mounted: StorageMountState) {
-        
+        let cameraClient:MVCameraClient = MVCameraClient.sharedInstance();
+        if (mounted == StorageMountStateOK)
+        {
+            self.storageLabel.text = "free/total : \(cameraClient.freeStorage)/\(cameraClient.totalStorage)";
+        }
+        else
+        {
+            self.storageLabel.text = "No SDCard";
+        }
     }
     
     func didStorageStateChanged(_ newState: StorageState, oldState: StorageState) {
@@ -101,7 +111,7 @@ import UIKit
     }
     
     func didStorageTotalFreeChanged(_ total: Int32, free: Int32) {
-        
+        self.storageLabel.text = "free/total : \(free)/\(total)";
     }
     
     func didReceiveCameraNotification(_ notification: String!) {
@@ -118,6 +128,16 @@ import UIKit
         self.connectButton.isEnabled = true;
         self.connectButton.setTitle("Disconnect", for: UIControlState.normal)
         self.shootButton.isHidden = false;
+        self.voltageLabel.text = "Voltage:\(device.voltagePercent)%\(device.isCharging ? " Charging":"")";
+        let cameraClient:MVCameraClient = MVCameraClient.sharedInstance();
+        if (cameraClient.storageMounted == StorageMountStateOK)
+        {
+            self.storageLabel.text = "free/total : \(cameraClient.freeStorage)/\(cameraClient.totalStorage)";
+        }
+        else
+        {
+            self.storageLabel.text = "No SDCard";
+        }
     }
     
     func didDisconnect(_ reason: CameraDisconnectReason) {

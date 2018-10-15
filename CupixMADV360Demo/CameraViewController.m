@@ -22,6 +22,8 @@
 
 @property (nonatomic, weak) IBOutlet UIButton* connectButton;
 @property (nonatomic, weak) IBOutlet UIButton* shootButton;
+@property (nonatomic, weak) IBOutlet UILabel* voltageLabel;
+@property (nonatomic, weak) IBOutlet UILabel* storageLabel;
 
 @property (nonatomic, strong) MVCameraDevice* device;
 
@@ -100,6 +102,16 @@
     self.connectButton.enabled = YES;
     [self.connectButton setTitle:@"Disconnect" forState:UIControlStateNormal];
     self.shootButton.hidden = NO;
+    self.voltageLabel.text = [NSString stringWithFormat:@"Voltage:%d%%%@", device.voltagePercent, (device.isCharging? @" Charging":@"")];
+    MVCameraClient* cameraClient = [MVCameraClient sharedInstance];
+    if (cameraClient.storageMounted == StorageMountStateOK)
+    {
+        self.storageLabel.text = [NSString stringWithFormat:@"free/total : %d/%d", cameraClient.freeStorage, cameraClient.totalStorage];
+    }
+    else
+    {
+        self.storageLabel.text = @"No SDCard";
+    }
 }
 
 -(void) didConnectFail:(NSString *)errorMessage {
@@ -124,6 +136,30 @@
 -(void) didEndShooting:(NSString *)remoteFilePath videoDurationMills:(NSInteger)videoDurationMills error:(int)error errMsg:(NSString *)errMsg {
     self.shootButton.enabled = YES;
     [self.shootButton setTitle:@"Shoot" forState:UIControlStateNormal];
+}
+
+-(void) didStorageMountedStateChanged:(StorageMountState)mounted {
+    MVCameraClient* cameraClient = [MVCameraClient sharedInstance];
+    if (mounted == StorageMountStateOK)
+    {
+        self.storageLabel.text = [NSString stringWithFormat:@"free/total : %d/%d", cameraClient.freeStorage, cameraClient.totalStorage];
+    }
+    else
+    {
+        self.storageLabel.text = @"No SDCard";
+    }
+}
+
+-(void) didStorageStateChanged:(StorageState)newState oldState:(StorageState)oldState {
+    
+}
+
+-(void) didStorageTotalFreeChanged:(int)total free:(int)free {
+    self.storageLabel.text = [NSString stringWithFormat:@"free/total : %d/%d", free, total];
+}
+
+-(void) didVoltagePercentChanged:(int)percent isCharging:(BOOL)isCharging {
+    self.voltageLabel.text = [NSString stringWithFormat:@"Voltage:%d%%%@", percent, (isCharging? @" Charging":@"")];
 }
 
 #pragma mark    MVMediaDataSourceObserver

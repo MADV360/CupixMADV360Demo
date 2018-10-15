@@ -40,9 +40,8 @@
                                     <action selector="onShootButtonClicked:" destination="9pv-A4-QxB" eventType="touchUpInside" id="jHM-WE-7uq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4H-Y4-7nE">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4H-Y4-7nE">
                                 <rect key="frame" x="289" y="53" width="70" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Settings...">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -51,13 +50,33 @@
                                     <segue destination="Xxa-zm-Z3W" kind="show" id="XVA-Mz-p4w"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voltage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7a-z0-Iym">
+                                <rect key="frame" x="158.5" y="83" width="58" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Storage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIA-uc-qE6">
+                                <rect key="frame" x="157" y="112" width="61" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="25C-Ri-Uh5" firstAttribute="top" secondItem="Kzw-2w-gub" secondAttribute="bottom" constant="36" id="CFQ-cU-qwa"/>
+                            <constraint firstItem="C7a-z0-Iym" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="Fm7-z3-3CQ"/>
+                            <constraint firstItem="z4H-Y4-7nE" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="33" id="HWx-lT-liT"/>
+                            <constraint firstItem="z4H-Y4-7nE" firstAttribute="bottom" secondItem="C7a-z0-Iym" secondAttribute="top" id="Ldr-Dl-iep"/>
+                            <constraint firstItem="oIA-uc-qE6" firstAttribute="top" secondItem="C7a-z0-Iym" secondAttribute="bottom" constant="8" id="iGW-Gs-iQb"/>
                             <constraint firstItem="Kzw-2w-gub" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="jl2-Vg-JHe"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="25C-Ri-Uh5" secondAttribute="bottom" constant="30" id="mN2-Sv-l1j"/>
                             <constraint firstItem="25C-Ri-Uh5" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="oDk-0f-vD0"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="z4H-Y4-7nE" secondAttribute="trailing" constant="16" id="pv2-5c-irg"/>
+                            <constraint firstItem="oIA-uc-qE6" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="zt9-nZ-8dE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
@@ -65,6 +84,8 @@
                     <connections>
                         <outlet property="connectButton" destination="25C-Ri-Uh5" id="och-pK-5pZ"/>
                         <outlet property="shootButton" destination="Kzw-2w-gub" id="MiA-Mk-VTe"/>
+                        <outlet property="storageLabel" destination="oIA-uc-qE6" id="eqM-Ta-8qy"/>
+                        <outlet property="voltageLabel" destination="C7a-z0-Iym" id="vCo-TG-Qpe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
