@@ -64,13 +64,25 @@
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEK-fL-fcd">
+                                <rect key="frame" x="16" y="318.5" width="81" height="30"/>
+                                <state key="normal" title="View Mode:">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="onViewModeButtonClicked:" destination="9pv-A4-QxB" eventType="touchUpInside" id="bVK-dh-lZd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="25C-Ri-Uh5" firstAttribute="top" secondItem="Kzw-2w-gub" secondAttribute="bottom" constant="36" id="CFQ-cU-qwa"/>
+                            <constraint firstItem="PEK-fL-fcd" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="16" id="FSU-gR-Kfe"/>
                             <constraint firstItem="C7a-z0-Iym" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="Fm7-z3-3CQ"/>
                             <constraint firstItem="z4H-Y4-7nE" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="33" id="HWx-lT-liT"/>
                             <constraint firstItem="z4H-Y4-7nE" firstAttribute="bottom" secondItem="C7a-z0-Iym" secondAttribute="top" id="Ldr-Dl-iep"/>
+                            <constraint firstItem="PEK-fL-fcd" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="hwG-Ex-Kcs"/>
                             <constraint firstItem="oIA-uc-qE6" firstAttribute="top" secondItem="C7a-z0-Iym" secondAttribute="bottom" constant="8" id="iGW-Gs-iQb"/>
                             <constraint firstItem="Kzw-2w-gub" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="jl2-Vg-JHe"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="25C-Ri-Uh5" secondAttribute="bottom" constant="30" id="mN2-Sv-l1j"/>
@@ -85,6 +97,7 @@
                         <outlet property="connectButton" destination="25C-Ri-Uh5" id="och-pK-5pZ"/>
                         <outlet property="shootButton" destination="Kzw-2w-gub" id="MiA-Mk-VTe"/>
                         <outlet property="storageLabel" destination="oIA-uc-qE6" id="eqM-Ta-8qy"/>
+                        <outlet property="viewModeButton" destination="PEK-fL-fcd" id="Lbd-GI-xSP"/>
                         <outlet property="voltageLabel" destination="C7a-z0-Iym" id="vCo-TG-Qpe"/>
                     </connections>
                 </viewController>

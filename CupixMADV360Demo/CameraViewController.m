@@ -24,11 +24,13 @@
 @property (nonatomic, weak) IBOutlet UIButton* shootButton;
 @property (nonatomic, weak) IBOutlet UILabel* voltageLabel;
 @property (nonatomic, weak) IBOutlet UILabel* storageLabel;
+@property (nonatomic, weak) IBOutlet UIButton* viewModeButton;
 
 @property (nonatomic, strong) MVCameraDevice* device;
 
 -(IBAction)onConnectButtonClicked:(id)sender;
 -(IBAction)onShootButtonClicked:(id)sender;
+-(IBAction)onViewModeButtonClicked:(id)sender;
 
 @end
 
@@ -94,6 +96,34 @@
     [self.shootButton setTitle:@"Shooting..." forState:UIControlStateNormal];
 }
 
+-(IBAction)onViewModeButtonClicked:(id)sender {
+    switch (self.glView.panoramaMode)
+    {
+        case PanoramaDisplayModeStereoGraphic:
+            self.glView.panoramaMode = PanoramaDisplayModeSphere;
+            [self.viewModeButton setTitle:@"ViewMode:Sphere" forState:UIControlStateNormal];
+            break;
+        case PanoramaDisplayModeSphere:
+            self.glView.panoramaMode = PanoramaDisplayModeLittlePlanet;
+            [self.viewModeButton setTitle:@"ViewMode:Planet" forState:UIControlStateNormal];
+            break;
+        case PanoramaDisplayModeLittlePlanet:
+            self.glView.panoramaMode = PanoramaDisplayModeCrystalBall;
+            [self.viewModeButton setTitle:@"ViewMode:CrystalBall" forState:UIControlStateNormal];
+            break;
+        case PanoramaDisplayModeCrystalBall:
+            self.glView.panoramaMode = PanoramaDisplayModeFromCubeMap;
+            [self.viewModeButton setTitle:@"ViewMode:Panorama" forState:UIControlStateNormal];
+            break;
+        case PanoramaDisplayModeFromCubeMap:
+            self.glView.panoramaMode = PanoramaDisplayModeStereoGraphic;
+            [self.viewModeButton setTitle:@"ViewMode:StereoGraphic" forState:UIControlStateNormal];
+            break;
+        default:
+            break;
+    }
+}
+
 #pragma mark MVCameraClientObserver
 
 -(void) didConnectSuccess:(MVCameraDevice *)device {
@@ -104,7 +134,7 @@
     self.shootButton.hidden = NO;
     self.voltageLabel.text = [NSString stringWithFormat:@"Voltage:%d%%%@", device.voltagePercent, (device.isCharging? @" Charging":@"")];
     MVCameraClient* cameraClient = [MVCameraClient sharedInstance];
-    if (cameraClient.storageMounted == StorageMountStateOK)
+    if (cameraClient.storageMounted != StorageMountStateNO)
     {
         self.storageLabel.text = [NSString stringWithFormat:@"free/total : %d/%d", cameraClient.freeStorage, cameraClient.totalStorage];
     }
@@ -112,6 +142,7 @@
     {
         self.storageLabel.text = @"No SDCard";
     }
+    [self.viewModeButton setTitle:@"ViewMode:StereoGraphic" forState:UIControlStateNormal];
 }
 
 -(void) didConnectFail:(NSString *)errorMessage {
@@ -139,8 +170,9 @@
 }
 
 -(void) didStorageMountedStateChanged:(StorageMountState)mounted {
+    NSLog(@"didStorageMountedStateChanged : SD card mounted = %d", mounted);
     MVCameraClient* cameraClient = [MVCameraClient sharedInstance];
-    if (mounted == StorageMountStateOK)
+    if (mounted != StorageMountStateNO)
     {
         self.storageLabel.text = [NSString stringWithFormat:@"free/total : %d/%d", cameraClient.freeStorage, cameraClient.totalStorage];
     }
