@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		01DDB4AD712591E304FA3188 /* libPods-CupixMADV360Demo_MADVPanoSource.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FFDCA535B0D36F28FFB73B /* libPods-CupixMADV360Demo_MADVPanoSource.a */; };
+		5221DC03217432B500F969D6 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5221DC02217432B500F969D6 /* SettingsViewController.m */; };
+		5221DC04217432B500F969D6 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5221DC02217432B500F969D6 /* SettingsViewController.m */; };
+		5221DC062174333100F969D6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5221DC052174333100F969D6 /* SettingsViewController.swift */; };
 		526AECCC216C465D0083EE43 /* MADVPano.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3914BD20E237F300DC185D /* MADVPano.framework */; };
 		BB39149C20E21D0E00DC185D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB39149B20E21D0E00DC185D /* AppDelegate.m */; };
 		BB39149F20E21D0E00DC185D /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB39149E20E21D0E00DC185D /* CameraViewController.m */; };
@@ -337,6 +340,9 @@
 		0249543071E449CBBAD1A5E9 /* Pods-CupixMADV360Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CupixMADV360Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CupixMADV360Demo/Pods-CupixMADV360Demo.release.xcconfig"; sourceTree = "<group>"; };
 		1D8FAA74FB77FC68ED82ABE1 /* Pods-CupixMADV360Demo_MADVPanoSource.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CupixMADV360Demo_MADVPanoSource.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CupixMADV360Demo_MADVPanoSource/Pods-CupixMADV360Demo_MADVPanoSource.debug.xcconfig"; sourceTree = "<group>"; };
 		49FFDCA535B0D36F28FFB73B /* libPods-CupixMADV360Demo_MADVPanoSource.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CupixMADV360Demo_MADVPanoSource.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5221DC01217432B500F969D6 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		5221DC02217432B500F969D6 /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		5221DC052174333100F969D6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8BDBA4859DB4DEBC765D3F79 /* Pods-CupixMADV360Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CupixMADV360Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CupixMADV360Demo/Pods-CupixMADV360Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		A59C0C5C20FF79977520248A /* libPods-CupixMADV360Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CupixMADV360Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB39149720E21D0E00DC185D /* CupixMADV360Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CupixMADV360Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1192,6 +1198,9 @@
 				BB62D89F210AC5B4002B70C7 /* ImageViewController.m */,
 				BB8489492150A24C00511AE6 /* CupixMADV360Demo-Bridging-Header.h */,
 				BB84894A2150A24D00511AE6 /* CupixMADV360Demo_MADVPanoSource-Bridging-Header.h */,
+				5221DC01217432B500F969D6 /* SettingsViewController.h */,
+				5221DC02217432B500F969D6 /* SettingsViewController.m */,
+				5221DC052174333100F969D6 /* SettingsViewController.swift */,
 			);
 			path = CupixMADV360Demo;
 			sourceTree = "<group>";
@@ -2497,6 +2506,7 @@
 				BB39149C20E21D0E00DC185D /* AppDelegate.m in Sources */,
 				BB3914AD20E21D1100DC185D /* main.m in Sources */,
 				BB39149F20E21D0E00DC185D /* CameraViewController.m in Sources */,
+				5221DC03217432B500F969D6 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2521,6 +2531,7 @@
 				BB6FF75A21072F7100CFC637 /* MadvGLRenderer.cpp in Sources */,
 				BB6FF71921072F7100CFC637 /* GLProgram.cpp in Sources */,
 				BB6FF6F021072F7100CFC637 /* olympusmn.cpp in Sources */,
+				5221DC04217432B500F969D6 /* SettingsViewController.m in Sources */,
 				BB6FF6CD21072F7100CFC637 /* CycordAudioRecorder.mm in Sources */,
 				BB6FFBA1210739E100CFC637 /* AMBAGetAllSettingParamResponse.m in Sources */,
 				BB6FFA422107312D00CFC637 /* MVMedia.m in Sources */,
@@ -2714,6 +2725,7 @@
 				BB8489712150A56400511AE6 /* UIView+HierachyExtensions.m in Sources */,
 				BB8489722150A56400511AE6 /* LibraryViewController.m in Sources */,
 				BBFBF743215E3AFF00EDA879 /* CameraViewController.swift in Sources */,
+				5221DC062174333100F969D6 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,10 +9,22 @@
 import Foundation
 import UIKit
 
+enum PanoramaDisplayMode : Int32 {
+    case Plain = 0x00 // No projection, just draw input texture as it is
+    case Sphere = 0x01 // Normal mode: Camera at centre of the panorama sphere
+    case Planet = 0x02 // Asteroid mode: Camera at north pole of the panorama sphere, and with wider FOV
+    case StereoGraphic = 0x03 // Fisheye mode: Camera at back point on the panorama sphere
+    case Panorama = 0x04
+    case CrystalBall = 0x05
+}
+
 @objc(CameraViewController) class CameraViewController : MVKxMovieViewController, MVCameraClientObserver, MVMediaDataSourceObserver, MVMediaDownloadStatusObserver {
     
     @IBOutlet weak var connectButton:UIButton!
     @IBOutlet weak var shootButton:UIButton!
+    @IBOutlet weak var voltageLabel:UILabel!
+    @IBOutlet weak var storageLabel:UILabel!
+    @IBOutlet weak var viewModeButton:UIButton!
     
     var device:MVCameraDevice?
     
@@ -35,6 +47,29 @@ import UIKit
         self.shootButton.setTitle("Shooting...", for: UIControlState.normal)
     }
     
+    @IBAction func onViewModeButtonClicked(_ sender:Any) {
+        switch (self.glView.panoramaMode)
+        {
+        case PanoramaDisplayMode.StereoGraphic.rawValue:
+            self.glView.panoramaMode = PanoramaDisplayMode.Sphere.rawValue;
+            self.viewModeButton.setTitle("ViewMode:Sphere", for:UIControlState.normal);
+        case PanoramaDisplayMode.Sphere.rawValue:
+            self.glView.panoramaMode = PanoramaDisplayMode.Planet.rawValue;
+            self.viewModeButton.setTitle("ViewMode:Planet", for:UIControlState.normal);
+        case PanoramaDisplayMode.Planet.rawValue:
+            self.glView.panoramaMode = PanoramaDisplayMode.CrystalBall.rawValue;
+            self.viewModeButton.setTitle("ViewMode:CrystalBall", for:UIControlState.normal);
+        case PanoramaDisplayMode.CrystalBall.rawValue:
+            self.glView.panoramaMode = PanoramaDisplayMode.Panorama.rawValue;
+            self.viewModeButton.setTitle("ViewMode:Panorama", for:UIControlState.normal);
+        case PanoramaDisplayMode.Panorama.rawValue:
+            self.glView.panoramaMode = PanoramaDisplayMode.StereoGraphic.rawValue;
+            self.viewModeButton.setTitle("ViewMode:StereoGraphic", for:UIControlState.normal);
+        default:
+            break;
+        }
+    }
+    
     // MVCameraClientObserver:
     func willConnect() {
         
@@ -53,7 +88,7 @@ import UIKit
     }
     
     func didVoltagePercentChanged(_ percent: Int32, isCharging: Bool) {
-        
+        self.voltageLabel.text = "Voltage:\(percent)%\(isCharging ? " Charging":"")";
     }
     
     func didSwitchCameraModeFail(_ errMsg: String!) {
@@ -93,7 +128,16 @@ import UIKit
     }
     
     func didStorageMountedStateChanged(_ mounted: StorageMountState) {
-        
+        print("didStorageMountedStateChanged : SD card mounted = \(mounted)");
+        let cameraClient:MVCameraClient = MVCameraClient.sharedInstance();
+        if (mounted != StorageMountStateNO)
+        {
+            self.storageLabel.text = "free/total : \(cameraClient.freeStorage)/\(cameraClient.totalStorage)";
+        }
+        else
+        {
+            self.storageLabel.text = "No SDCard";
+        }
     }
     
     func didStorageStateChanged(_ newState: StorageState, oldState: StorageState) {
@@ -101,7 +145,7 @@ import UIKit
     }
     
     func didStorageTotalFreeChanged(_ total: Int32, free: Int32) {
-        
+        self.storageLabel.text = "free/total : \(free)/\(total)";
     }
     
     func didReceiveCameraNotification(_ notification: String!) {
@@ -118,6 +162,17 @@ import UIKit
         self.connectButton.isEnabled = true;
         self.connectButton.setTitle("Disconnect", for: UIControlState.normal)
         self.shootButton.isHidden = false;
+        self.voltageLabel.text = "Voltage:\(device.voltagePercent)%\(device.isCharging ? " Charging":"")";
+        let cameraClient:MVCameraClient = MVCameraClient.sharedInstance();
+        if (cameraClient.storageMounted != StorageMountStateNO)
+        {
+            self.storageLabel.text = "free/total : \(cameraClient.freeStorage)/\(cameraClient.totalStorage)";
+        }
+        else
+        {
+            self.storageLabel.text = "No SDCard";
+        }
+        self.viewModeButton.setTitle("ViewMode:StereoGraphic", for:UIControlState.normal);
     }
     
     func didDisconnect(_ reason: CameraDisconnectReason) {

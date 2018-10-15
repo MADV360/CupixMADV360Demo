@@ -22,11 +22,15 @@
 
 @property (nonatomic, weak) IBOutlet UIButton* connectButton;
 @property (nonatomic, weak) IBOutlet UIButton* shootButton;
+@property (nonatomic, weak) IBOutlet UILabel* voltageLabel;
+@property (nonatomic, weak) IBOutlet UILabel* storageLabel;
+@property (nonatomic, weak) IBOutlet UIButton* viewModeButton;
 
 @property (nonatomic, strong) MVCameraDevice* device;
 
 -(IBAction)onConnectButtonClicked:(id)sender;
 -(IBAction)onShootButtonClicked:(id)sender;
+-(IBAction)onViewModeButtonClicked:(id)sender;
 
 @end
 
@@ -92,6 +96,34 @@
     [self.shootButton setTitle:@"Shooting..." forState:UIControlStateNormal];
 }
 
+-(IBAction)onViewModeButtonClicked:(id)sender {
+    switch (self.glView.panoramaMode)
+    {
+        case PanoramaDisplayModeStereoGraphic:
+            self.glView.panoramaMode = PanoramaDisplayModeSphere;
+            [self.viewModeButton setTitle:@"ViewMode:Sphere" forState:UIControlStateNormal];
+            break;
+        case PanoramaDisplayModeSphere:
+            self.glView.panoramaMode = PanoramaDisplayModeLittlePlanet;
+            [self.viewModeButton setTitle:@"ViewMode:Planet" forState:UIControlStateNormal];
+            break;
+        case PanoramaDisplayModeLittlePlanet:
+            self.glView.panoramaMode = PanoramaDisplayModeCrystalBall;
+            [self.viewModeButton setTitle:@"ViewMode:CrystalBall" forState:UIControlStateNormal];
+            break;
+        case PanoramaDisplayModeCrystalBall:
+            self.glView.panoramaMode = PanoramaDisplayModeFromCubeMap;
+            [self.viewModeButton setTitle:@"ViewMode:Panorama" forState:UIControlStateNormal];
+            break;
+        case PanoramaDisplayModeFromCubeMap:
+            self.glView.panoramaMode = PanoramaDisplayModeStereoGraphic;
+            [self.viewModeButton setTitle:@"ViewMode:StereoGraphic" forState:UIControlStateNormal];
+            break;
+        default:
+            break;
+    }
+}
+
 #pragma mark MVCameraClientObserver
 
 -(void) didConnectSuccess:(MVCameraDevice *)device {
@@ -100,6 +132,17 @@
     self.connectButton.enabled = YES;
     [self.connectButton setTitle:@"Disconnect" forState:UIControlStateNormal];
     self.shootButton.hidden = NO;
+    self.voltageLabel.text = [NSString stringWithFormat:@"Voltage:%d%%%@", device.voltagePercent, (device.isCharging? @" Charging":@"")];
+    MVCameraClient* cameraClient = [MVCameraClient sharedInstance];
+    if (cameraClient.storageMounted != StorageMountStateNO)
+    {
+        self.storageLabel.text = [NSString stringWithFormat:@"free/total : %d/%d", cameraClient.freeStorage, cameraClient.totalStorage];
+    }
+    else
+    {
+        self.storageLabel.text = @"No SDCard";
+    }
+    [self.viewModeButton setTitle:@"ViewMode:StereoGraphic" forState:UIControlStateNormal];
 }
 
 -(void) didConnectFail:(NSString *)errorMessage {
@@ -124,6 +167,31 @@
 -(void) didEndShooting:(NSString *)remoteFilePath videoDurationMills:(NSInteger)videoDurationMills error:(int)error errMsg:(NSString *)errMsg {
     self.shootButton.enabled = YES;
     [self.shootButton setTitle:@"Shoot" forState:UIControlStateNormal];
+}
+
+-(void) didStorageMountedStateChanged:(StorageMountState)mounted {
+    NSLog(@"didStorageMountedStateChanged : SD card mounted = %d", mounted);
+    MVCameraClient* cameraClient = [MVCameraClient sharedInstance];
+    if (mounted != StorageMountStateNO)
+    {
+        self.storageLabel.text = [NSString stringWithFormat:@"free/total : %d/%d", cameraClient.freeStorage, cameraClient.totalStorage];
+    }
+    else
+    {
+        self.storageLabel.text = @"No SDCard";
+    }
+}
+
+-(void) didStorageStateChanged:(StorageState)newState oldState:(StorageState)oldState {
+    
+}
+
+-(void) didStorageTotalFreeChanged:(int)total free:(int)free {
+    self.storageLabel.text = [NSString stringWithFormat:@"free/total : %d/%d", free, total];
+}
+
+-(void) didVoltagePercentChanged:(int)percent isCharging:(BOOL)isCharging {
+    self.voltageLabel.text = [NSString stringWithFormat:@"Voltage:%d%%%@", percent, (isCharging? @" Charging":@"")];
 }
 
 #pragma mark    MVMediaDataSourceObserver
