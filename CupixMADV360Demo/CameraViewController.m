@@ -97,6 +97,7 @@
 }
 
 -(IBAction)onViewModeButtonClicked:(id)sender {
+    if (!self.glView) return;
     switch (self.glView.panoramaMode)
     {
         case PanoramaDisplayModeStereoGraphic:

@@ -48,6 +48,9 @@ enum PanoramaDisplayMode : Int32 {
     }
     
     @IBAction func onViewModeButtonClicked(_ sender:Any) {
+        if (self.glView == nil) {
+            return;
+        }
         switch (self.glView.panoramaMode)
         {
         case PanoramaDisplayMode.StereoGraphic.rawValue:
