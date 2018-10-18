@@ -848,7 +848,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
-					MADVCAMERA_EXPORT,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -892,7 +891,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
-					MADVCAMERA_EXPORT,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -950,7 +948,6 @@
 					"TARGET_DARWIN=1",
 					"TARGET_DARWIN_IOS=1",
 					"TARGET_OS_IOS=1",
-					MADVCAMERA_EXPORT,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1023,7 +1020,6 @@
 					"TARGET_DARWIN=1",
 					"TARGET_DARWIN_IOS=1",
 					"TARGET_OS_IOS=1",
-					MADVCAMERA_EXPORT,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1083,7 +1079,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
-					MADVCAMERA_EXPORT,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1128,7 +1123,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
-					MADVCAMERA_EXPORT,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
