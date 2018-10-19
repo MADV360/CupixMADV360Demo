@@ -88,7 +88,6 @@
 		BB8489842150A56400511AE6 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3914DE20E238F000DC185D /* opencv2.framework */; };
 		BB8489852150A56400511AE6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3914C220E2383B00DC185D /* AVFoundation.framework */; };
 		BB8489862150A56400511AE6 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3914C020E2383600DC185D /* CoreVideo.framework */; };
-		BB8489882150A56400511AE6 /* libPods-CupixMADV360Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A59C0C5C20FF79977520248A /* libPods-CupixMADV360Demo.a */; };
 		BB8489892150A56400511AE6 /* MADVCamera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3914BC20E237E000DC185D /* MADVCamera.framework */; };
 		BB84898B2150A56400511AE6 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB3914E620E245E000DC185D /* test.jpg */; };
 		BB84898C2150A56400511AE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3914A820E21D1100DC185D /* LaunchScreen.storyboard */; };
@@ -97,16 +96,17 @@
 		BBE5269B215E11D10032BBDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE5269A215E11D00032BBDA /* AppDelegate.swift */; };
 		BBFBF743215E3AFF00EDA879 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE52698215E0F900032BBDA /* CameraViewController.swift */; };
 		D6A796EAA3F42006A4B49D81 /* libPods-CupixMADV360Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A59C0C5C20FF79977520248A /* libPods-CupixMADV360Demo.a */; };
+		DCAFFD1F163A0936B0CF3A4D /* libPods-CupixMADV360Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A59C0C5C20FF79977520248A /* libPods-CupixMADV360Demo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0249543071E449CBBAD1A5E9 /* Pods-CupixMADV360Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CupixMADV360Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CupixMADV360Demo/Pods-CupixMADV360Demo.release.xcconfig"; sourceTree = "<group>"; };
 		1D8FAA74FB77FC68ED82ABE1 /* Pods-CupixMADV360Demo_MADVPanoSource.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CupixMADV360Demo_MADVPanoSource.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CupixMADV360Demo_MADVPanoSource/Pods-CupixMADV360Demo_MADVPanoSource.debug.xcconfig"; sourceTree = "<group>"; };
+		413598E8426C5440B94B1EFC /* Pods-CupixMADV360Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CupixMADV360Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CupixMADV360Demo/Pods-CupixMADV360Demo.release.xcconfig"; sourceTree = "<group>"; };
 		49FFDCA535B0D36F28FFB73B /* libPods-CupixMADV360Demo_MADVPanoSource.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CupixMADV360Demo_MADVPanoSource.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5221DC01217432B500F969D6 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		5221DC02217432B500F969D6 /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		5221DC052174333100F969D6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		8BDBA4859DB4DEBC765D3F79 /* Pods-CupixMADV360Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CupixMADV360Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CupixMADV360Demo/Pods-CupixMADV360Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		7B5D14FD911A24077CE05353 /* Pods-CupixMADV360Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CupixMADV360Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CupixMADV360Demo/Pods-CupixMADV360Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		A59C0C5C20FF79977520248A /* libPods-CupixMADV360Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CupixMADV360Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB39149720E21D0E00DC185D /* CupixMADV360Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CupixMADV360Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB39149A20E21D0E00DC185D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -182,6 +182,7 @@
 				BB3914BF20E237F300DC185D /* MADVPano.framework in Frameworks */,
 				D6A796EAA3F42006A4B49D81 /* libPods-CupixMADV360Demo.a in Frameworks */,
 				BB3914BE20E237F300DC185D /* MADVCamera.framework in Frameworks */,
+				DCAFFD1F163A0936B0CF3A4D /* libPods-CupixMADV360Demo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,7 +232,6 @@
 				BB8489842150A56400511AE6 /* opencv2.framework in Frameworks */,
 				BB8489852150A56400511AE6 /* AVFoundation.framework in Frameworks */,
 				BB8489862150A56400511AE6 /* CoreVideo.framework in Frameworks */,
-				BB8489882150A56400511AE6 /* libPods-CupixMADV360Demo.a in Frameworks */,
 				526AECCC216C465D0083EE43 /* MADVPano.framework in Frameworks */,
 				BB8489892150A56400511AE6 /* MADVCamera.framework in Frameworks */,
 			);
@@ -243,10 +243,10 @@
 		213734A94827B871BC47B194 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8BDBA4859DB4DEBC765D3F79 /* Pods-CupixMADV360Demo.debug.xcconfig */,
-				0249543071E449CBBAD1A5E9 /* Pods-CupixMADV360Demo.release.xcconfig */,
 				1D8FAA74FB77FC68ED82ABE1 /* Pods-CupixMADV360Demo_MADVPanoSource.debug.xcconfig */,
 				F29E21E31CD3D784F174A71F /* Pods-CupixMADV360Demo_MADVPanoSource.release.xcconfig */,
+				7B5D14FD911A24077CE05353 /* Pods-CupixMADV360Demo.debug.xcconfig */,
+				413598E8426C5440B94B1EFC /* Pods-CupixMADV360Demo.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -361,8 +361,6 @@
 				BB39149320E21D0E00DC185D /* Sources */,
 				BB39149420E21D0E00DC185D /* Frameworks */,
 				BB39149520E21D0E00DC185D /* Resources */,
-				020090FF33B626D494518CC9 /* [CP] Embed Pods Frameworks */,
-				0E81B657EEC11FFFAC36500A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -381,8 +379,6 @@
 				BB6FF51B21072EA900CFC637 /* Sources */,
 				BB6FF52121072EA900CFC637 /* Frameworks */,
 				BB6FF53521072EA900CFC637 /* Resources */,
-				BB6FF53A21072EA900CFC637 /* [CP] Embed Pods Frameworks */,
-				BB6FF53B21072EA900CFC637 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -397,12 +393,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB8489912150A56400511AE6 /* Build configuration list for PBXNativeTarget "CupixMADV360Demo_Swift" */;
 			buildPhases = (
-				BB84896D2150A56400511AE6 /* [CP] Check Pods Manifest.lock */,
 				BB84896E2150A56400511AE6 /* Sources */,
 				BB8489762150A56400511AE6 /* Frameworks */,
 				BB84898A2150A56400511AE6 /* Resources */,
-				BB84898F2150A56400511AE6 /* [CP] Embed Pods Frameworks */,
-				BB8489902150A56400511AE6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -506,36 +499,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		020090FF33B626D494518CC9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CupixMADV360Demo/Pods-CupixMADV360Demo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		0E81B657EEC11FFFAC36500A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CupixMADV360Demo/Pods-CupixMADV360Demo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		BB6FF51A21072EA900CFC637 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -552,84 +515,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BB6FF53A21072EA900CFC637 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CupixMADV360Demo_MADVPanoSource/Pods-CupixMADV360Demo_MADVPanoSource-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BB6FF53B21072EA900CFC637 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CupixMADV360Demo_MADVPanoSource/Pods-CupixMADV360Demo_MADVPanoSource-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BB84896D2150A56400511AE6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CupixMADV360Demo-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BB84898F2150A56400511AE6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CupixMADV360Demo/Pods-CupixMADV360Demo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BB8489902150A56400511AE6 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CupixMADV360Demo/Pods-CupixMADV360Demo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C34DFAEF18B11016C787BCE4 /* [CP] Check Pods Manifest.lock */ = {
@@ -832,7 +717,7 @@
 		};
 		BB3914B120E21D1100DC185D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8BDBA4859DB4DEBC765D3F79 /* Pods-CupixMADV360Demo.debug.xcconfig */;
+			baseConfigurationReference = 7B5D14FD911A24077CE05353 /* Pods-CupixMADV360Demo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -876,7 +761,7 @@
 		};
 		BB3914B220E21D1100DC185D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0249543071E449CBBAD1A5E9 /* Pods-CupixMADV360Demo.release.xcconfig */;
+			baseConfigurationReference = 413598E8426C5440B94B1EFC /* Pods-CupixMADV360Demo.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1062,7 +947,6 @@
 		};
 		BB8489922150A56400511AE6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8BDBA4859DB4DEBC765D3F79 /* Pods-CupixMADV360Demo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1107,7 +991,6 @@
 		};
 		BB8489932150A56400511AE6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0249543071E449CBBAD1A5E9 /* Pods-CupixMADV360Demo.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
