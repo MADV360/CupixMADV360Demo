@@ -58,7 +58,7 @@
     // #MADVSDK#
     MVMediaManager* mediaManager = [MVMediaManager sharedInstance];
     mediaManager.downloadMediasIntoDocuments = YES;// :Important
-    mediaManager.noStitchingAfterPhotoDownloaded = !self.stitchingSwitch.selected;// :Important to Cupix
+    mediaManager.noStitchingAfterPhotoDownloaded = !self.stitchingSwitch.isOn;// :Important to Cupix
     // Add as observer for media manager:
     [mediaManager addMediaDataSourceObserver:self];
     [mediaManager addMediaDownloadStatusObserver:self];
@@ -128,8 +128,9 @@
 }
 
 -(IBAction)onStitchingSwitchChanged:(id)sender {
+    //NSLog(@"#NoStitch# self.stitchingSwitch.isOn=%d", self.stitchingSwitch.isOn);
     MVMediaManager* mediaManager = [MVMediaManager sharedInstance];
-    mediaManager.noStitchingAfterPhotoDownloaded = !self.stitchingSwitch.selected;
+    mediaManager.noStitchingAfterPhotoDownloaded = !self.stitchingSwitch.isOn;
 }
 
 #pragma mark MVCameraClientObserver
@@ -244,21 +245,22 @@
         NSString* documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
         NSString *sourcePath, *destPath;
         MVMediaManager* mediaManager = [MVMediaManager sharedInstance];
-        if (mediaManager.noStitchingAfterPhotoDownloaded)
+        if (!mediaManager.noStitchingAfterPhotoDownloaded)
         {
-            sourcePath = [[[documentPath stringByAppendingPathComponent:media.localPath] stringByAppendingPathExtension:media.cameraUUID] stringByAppendingPathExtension:@"prestitch.jpg"];
-            destPath = [[documentPath stringByAppendingPathComponent:media.localPath] stringByAppendingPathExtension:@"stitched.jpg"];
+            //sourcePath = [[[documentPath stringByAppendingPathComponent:media.localPath] stringByAppendingPathExtension:media.cameraUUID] stringByAppendingPathExtension:@"prestitch.jpg"];
+            //destPath = [[documentPath stringByAppendingPathComponent:media.localPath] stringByAppendingPathExtension:@"stitched.jpg"];
         }
         else
         {
             sourcePath = [documentPath stringByAppendingPathComponent:media.localPath];
             destPath = [sourcePath stringByAppendingPathExtension:@"stitched.jpg"];
+            
+            NSString* tempLUTDirectory = makeTempLUTDirectory(sourcePath);
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                renderMadvJPEGToJPEG(destPath, sourcePath, tempLUTDirectory, 0, 0, false);
+                [[NSFileManager defaultManager] removeItemAtPath:sourcePath error:nil];
+            });
         }
-        NSString* tempLUTDirectory = makeTempLUTDirectory(sourcePath);
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            renderMadvJPEGToJPEG(destPath, sourcePath, tempLUTDirectory, 0, 0, false);
-            [[NSFileManager defaultManager] removeItemAtPath:sourcePath error:nil];
-        });
     }
 }
 
