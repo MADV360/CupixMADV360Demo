@@ -241,6 +241,7 @@
     if (!errorCode && downloadStatus == MVMediaDownloadStatusFinished)
     {// When a media file has been successfully downloaded, get its local file name(relative to sandbox document directory) from this callback
         //To download files into sandbox from camera, "Application supports iTunes file sharing" and "App Transport Security Settings"->"Allow Arbitrary Loads" in Info.plist should all be set to YES
+        /*
         NSLog(@"#MADVSDK# didDownloadStatusChange : Media dowloading finished, stitched is '%@', original is '%@'", media.localPath, [MVPanoRenderer preStitchPictureFileName:media.cameraUUID fileName:media.localPath]);
         if (![media.localPath.pathExtension.lowercaseString isEqualToString:@"jpg"]) return;
         
@@ -251,17 +252,18 @@
         {
             sourcePath = [[[documentPath stringByAppendingPathComponent:media.localPath] stringByAppendingPathExtension:media.cameraUUID] stringByAppendingPathExtension:@"prestitch.jpg"];
             destPath = [[documentPath stringByAppendingPathComponent:media.localPath] stringByAppendingPathExtension:@"stitched.jpg"];
-            NSString* tempLUTDirectory = makeTempLUTDirectory(sourcePath);
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                renderMadvJPEGToJPEG(destPath, sourcePath, tempLUTDirectory, 0, 0, false);
-                [[NSFileManager defaultManager] removeItemAtPath:sourcePath error:nil];
-            });
         }
         else
         {
-            //sourcePath = [documentPath stringByAppendingPathComponent:media.localPath];
-            //destPath = [sourcePath stringByAppendingPathExtension:@"stitched.jpg"];
+            sourcePath = [documentPath stringByAppendingPathComponent:media.localPath];
+            destPath = [sourcePath stringByAppendingPathExtension:@"stitched.jpg"];
         }
+        NSString* tempLUTDirectory = makeTempLUTDirectory(sourcePath);
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            renderMadvJPEGToJPEG(destPath, sourcePath, tempLUTDirectory, 0, 0, false);
+             [[NSFileManager defaultManager] removeItemAtPath:sourcePath error:nil];
+        });
+        //*/
     }
 }
 
