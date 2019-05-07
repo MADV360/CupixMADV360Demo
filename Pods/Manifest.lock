@@ -25,7 +25,7 @@ PODS:
   - Realm/Headers (2.8.3)
 
 DEPENDENCIES:
-  - AFNetworking (~> 2.5.4)
+  - AFNetworking (~> 2.5.2)
   - Realm (= 2.8.3)
 
 SPEC REPOS:
@@ -37,6 +37,6 @@ SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   Realm: 3601ef091c8c499a31101d8563b991e75546cdce
 
-PODFILE CHECKSUM: f91d470b19ab701769ca8d54922e612cc93f69fe
+PODFILE CHECKSUM: 3cfe3d8b85a894edb770d87efb5c85b0a6dafa26
 
 COCOAPODS: 1.5.3

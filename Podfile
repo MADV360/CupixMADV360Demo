@@ -5,7 +5,7 @@ platform :ios, '9.0'
 
 def shared_pods
 
-pod 'AFNetworking', '~> 2.5.4'
+pod 'AFNetworking', '~> 2.5.2'
 #pod 'AFNetworking'
 #pod 'SSZipArchive', '~> 0.2.2'
 ##pod 'MJExtension', '3.0.3'

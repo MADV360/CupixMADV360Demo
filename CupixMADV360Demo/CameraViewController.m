@@ -78,15 +78,15 @@
 
 #pragma mark UIEvents
 -(IBAction)onConnectButtonClicked:(id)sender {
+    self.stitchingSwitch.enabled = NO;
+    self.connectButton.enabled = NO;
     if (0 == self.connectButton.tag)
     {
-        self.connectButton.enabled = NO;
         [self.connectButton setTitle:@"Connecting..." forState:UIControlStateNormal];
         [[MVCameraClient sharedInstance] connectCamera];//#MADVSDK#
     }
     else if (1 == self.connectButton.tag)
     {
-        self.connectButton.enabled = NO;
         [self.connectButton setTitle:@"Disconnecting..." forState:UIControlStateNormal];
         [[MVCameraClient sharedInstance] disconnectCamera];//#MADVSDK#
     }
@@ -139,6 +139,7 @@
     [self setContentPath:@"rtsp://192.168.42.1/live" parameters:nil];//#MADVSDK#
     self.connectButton.tag = 1;
     self.connectButton.enabled = YES;
+    self.stitchingSwitch.enabled = NO;
     [self.connectButton setTitle:@"Disconnect" forState:UIControlStateNormal];
     self.shootButton.hidden = NO;
     self.voltageLabel.text = [NSString stringWithFormat:@"Voltage:%d%%%@", device.voltagePercent, (device.isCharging? @" Charging":@"")];
@@ -163,6 +164,7 @@
     self.connectButton.enabled = YES;
     [self.connectButton setTitle:@"Connect" forState:UIControlStateNormal];
     self.shootButton.hidden = YES;
+    self.stitchingSwitch.enabled = YES;
 }
 
 -(void) didCameraModeChange:(CameraMode)mode subMode:(CameraSubMode)subMode param:(NSInteger)param {
@@ -247,19 +249,18 @@
         MVMediaManager* mediaManager = [MVMediaManager sharedInstance];
         if (!mediaManager.noStitchingAfterPhotoDownloaded)
         {
-            //sourcePath = [[[documentPath stringByAppendingPathComponent:media.localPath] stringByAppendingPathExtension:media.cameraUUID] stringByAppendingPathExtension:@"prestitch.jpg"];
-            //destPath = [[documentPath stringByAppendingPathComponent:media.localPath] stringByAppendingPathExtension:@"stitched.jpg"];
-        }
-        else
-        {
-            sourcePath = [documentPath stringByAppendingPathComponent:media.localPath];
-            destPath = [sourcePath stringByAppendingPathExtension:@"stitched.jpg"];
-            
+            sourcePath = [[[documentPath stringByAppendingPathComponent:media.localPath] stringByAppendingPathExtension:media.cameraUUID] stringByAppendingPathExtension:@"prestitch.jpg"];
+            destPath = [[documentPath stringByAppendingPathComponent:media.localPath] stringByAppendingPathExtension:@"stitched.jpg"];
             NSString* tempLUTDirectory = makeTempLUTDirectory(sourcePath);
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 renderMadvJPEGToJPEG(destPath, sourcePath, tempLUTDirectory, 0, 0, false);
                 [[NSFileManager defaultManager] removeItemAtPath:sourcePath error:nil];
             });
+        }
+        else
+        {
+            //sourcePath = [documentPath stringByAppendingPathComponent:media.localPath];
+            //destPath = [sourcePath stringByAppendingPathExtension:@"stitched.jpg"];
         }
     }
 }
