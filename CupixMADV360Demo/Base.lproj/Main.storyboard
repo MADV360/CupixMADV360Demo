@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -74,9 +74,23 @@
                                     <action selector="onViewModeButtonClicked:" destination="9pv-A4-QxB" eventType="touchUpInside" id="bVK-dh-lZd"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="u5Q-e6-S5o">
+                                <rect key="frame" x="163" y="459" width="51" height="31"/>
+                                <connections>
+                                    <action selector="onStitchingSwitchChanged:" destination="9pv-A4-QxB" eventType="valueChanged" id="TWS-Lk-Ql3"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stitching photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JF-9A-POx">
+                                <rect key="frame" x="220" y="464" width="125.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="u5Q-e6-S5o" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="1uD-1r-B17"/>
                             <constraint firstItem="25C-Ri-Uh5" firstAttribute="top" secondItem="Kzw-2w-gub" secondAttribute="bottom" constant="36" id="CFQ-cU-qwa"/>
                             <constraint firstItem="PEK-fL-fcd" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="16" id="FSU-gR-Kfe"/>
                             <constraint firstItem="C7a-z0-Iym" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="Fm7-z3-3CQ"/>
@@ -84,8 +98,11 @@
                             <constraint firstItem="z4H-Y4-7nE" firstAttribute="bottom" secondItem="C7a-z0-Iym" secondAttribute="top" id="Ldr-Dl-iep"/>
                             <constraint firstItem="PEK-fL-fcd" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="hwG-Ex-Kcs"/>
                             <constraint firstItem="oIA-uc-qE6" firstAttribute="top" secondItem="C7a-z0-Iym" secondAttribute="bottom" constant="8" id="iGW-Gs-iQb"/>
+                            <constraint firstItem="Kzw-2w-gub" firstAttribute="top" secondItem="u5Q-e6-S5o" secondAttribute="bottom" constant="2" id="iyr-JV-uqC"/>
+                            <constraint firstItem="2JF-9A-POx" firstAttribute="leading" secondItem="u5Q-e6-S5o" secondAttribute="trailing" constant="8" id="j28-0f-4ZY"/>
                             <constraint firstItem="Kzw-2w-gub" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="jl2-Vg-JHe"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="25C-Ri-Uh5" secondAttribute="bottom" constant="30" id="mN2-Sv-l1j"/>
+                            <constraint firstItem="2JF-9A-POx" firstAttribute="centerY" secondItem="u5Q-e6-S5o" secondAttribute="centerY" id="nvA-Hy-C7c"/>
                             <constraint firstItem="25C-Ri-Uh5" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="oDk-0f-vD0"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="z4H-Y4-7nE" secondAttribute="trailing" constant="16" id="pv2-5c-irg"/>
                             <constraint firstItem="oIA-uc-qE6" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="zt9-nZ-8dE"/>
@@ -96,6 +113,7 @@
                     <connections>
                         <outlet property="connectButton" destination="25C-Ri-Uh5" id="och-pK-5pZ"/>
                         <outlet property="shootButton" destination="Kzw-2w-gub" id="MiA-Mk-VTe"/>
+                        <outlet property="stitchingSwitch" destination="u5Q-e6-S5o" id="MeW-1B-bN9"/>
                         <outlet property="storageLabel" destination="oIA-uc-qE6" id="eqM-Ta-8qy"/>
                         <outlet property="viewModeButton" destination="PEK-fL-fcd" id="Lbd-GI-xSP"/>
                         <outlet property="voltageLabel" destination="C7a-z0-Iym" id="vCo-TG-Qpe"/>

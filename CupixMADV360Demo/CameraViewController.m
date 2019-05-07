@@ -25,12 +25,14 @@
 @property (nonatomic, weak) IBOutlet UILabel* voltageLabel;
 @property (nonatomic, weak) IBOutlet UILabel* storageLabel;
 @property (nonatomic, weak) IBOutlet UIButton* viewModeButton;
+@property (nonatomic, weak) IBOutlet UISwitch* stitchingSwitch;
 
 @property (nonatomic, strong) MVCameraDevice* device;
 
 -(IBAction)onConnectButtonClicked:(id)sender;
 -(IBAction)onShootButtonClicked:(id)sender;
 -(IBAction)onViewModeButtonClicked:(id)sender;
+-(IBAction)onStitchingSwitchChanged:(id)sender;
 
 @end
 
@@ -56,7 +58,7 @@
     // #MADVSDK#
     MVMediaManager* mediaManager = [MVMediaManager sharedInstance];
     mediaManager.downloadMediasIntoDocuments = YES;// :Important
-    mediaManager.noStitchingAfterPhotoDownloaded = YES;// :Important to Cupix
+    mediaManager.noStitchingAfterPhotoDownloaded = !self.stitchingSwitch.selected;// :Important to Cupix
     // Add as observer for media manager:
     [mediaManager addMediaDataSourceObserver:self];
     [mediaManager addMediaDownloadStatusObserver:self];
@@ -123,6 +125,11 @@
         default:
             break;
     }
+}
+
+-(IBAction)onStitchingSwitchChanged:(id)sender {
+    MVMediaManager* mediaManager = [MVMediaManager sharedInstance];
+    mediaManager.noStitchingAfterPhotoDownloaded = !self.stitchingSwitch.selected;
 }
 
 #pragma mark MVCameraClientObserver
