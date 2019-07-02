@@ -22,6 +22,7 @@
 
 @property (nonatomic, weak) IBOutlet UIButton* connectButton;
 @property (nonatomic, weak) IBOutlet UIButton* shootButton;
+@property (nonatomic, weak) IBOutlet UIButton* lensSelectButton;
 @property (nonatomic, weak) IBOutlet UILabel* voltageLabel;
 @property (nonatomic, weak) IBOutlet UILabel* storageLabel;
 @property (nonatomic, weak) IBOutlet UIButton* viewModeButton;
@@ -31,6 +32,7 @@
 
 -(IBAction)onConnectButtonClicked:(id)sender;
 -(IBAction)onShootButtonClicked:(id)sender;
+-(IBAction)onLensSelectButtonClicked:(id)sender;
 -(IBAction)onViewModeButtonClicked:(id)sender;
 -(IBAction)onStitchingSwitchChanged:(id)sender;
 
@@ -50,6 +52,7 @@
     [self.glView.glRenderLoop drawJPEG:testJpegPath];
     [self.glView.glRenderLoop setPanoramaMode:PanoramaDisplayModeStereoGraphic];
     //*/
+    [MVCameraDevice getCameraSettings];
 }
 
 -(void) viewDidAppear:(BOOL)animated {
@@ -98,6 +101,23 @@
     [self.shootButton setTitle:@"Shooting..." forState:UIControlStateNormal];
 }
 
+-(IBAction)onLensSelectButtonClicked:(id)sender {
+    UIAlertController* ac = [UIAlertController alertControllerWithTitle:nil message:@"Select camera lens" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction* actionBack = [UIAlertAction actionWithTitle:@"Back" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[MVCameraClient sharedInstance] setLensUsageMode:LensUsageModeBack];
+    }];
+    [ac addAction:actionBack];
+    UIAlertAction* actionFront = [UIAlertAction actionWithTitle:@"Front" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[MVCameraClient sharedInstance] setLensUsageMode:LensUsageModeFront];
+    }];
+    [ac addAction:actionFront];
+    UIAlertAction* actionBoth = [UIAlertAction actionWithTitle:@"Both" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[MVCameraClient sharedInstance] setLensUsageMode:LensUsageModeBoth];
+    }];
+    [ac addAction:actionBoth];
+    [self showViewController:ac sender:self];
+}
+
 -(IBAction)onViewModeButtonClicked:(id)sender {
     if (!self.glView) return;
     switch (self.glView.panoramaMode)
@@ -142,6 +162,7 @@
     self.stitchingSwitch.enabled = NO;
     [self.connectButton setTitle:@"Disconnect" forState:UIControlStateNormal];
     self.shootButton.hidden = NO;
+    self.lensSelectButton.enabled = YES;
     self.voltageLabel.text = [NSString stringWithFormat:@"Voltage:%d%%%@", device.voltagePercent, (device.isCharging? @" Charging":@"")];
     MVCameraClient* cameraClient = [MVCameraClient sharedInstance];
     if (cameraClient.storageMounted != StorageMountStateNO)
@@ -153,6 +174,11 @@
         self.storageLabel.text = @"No SDCard";
     }
     [self.viewModeButton setTitle:@"ViewMode:StereoGraphic" forState:UIControlStateNormal];
+    
+    if (!self.stitchingSwitch.isOn)
+    {
+        [cameraClient setSettingOption:10 paramUID:3];
+    }
 }
 
 -(void) didConnectFail:(NSString *)errorMessage {
@@ -165,6 +191,7 @@
     [self.connectButton setTitle:@"Connect" forState:UIControlStateNormal];
     self.shootButton.hidden = YES;
     self.stitchingSwitch.enabled = YES;
+    self.lensSelectButton.enabled = NO;
 }
 
 -(void) didCameraModeChange:(CameraMode)mode subMode:(CameraSubMode)subMode param:(NSInteger)param {

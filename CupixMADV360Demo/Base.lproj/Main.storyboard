@@ -57,6 +57,13 @@
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stitching photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JF-9A-POx">
+                                <rect key="frame" x="220" y="464" width="125.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Storage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIA-uc-qE6">
                                 <rect key="frame" x="157" y="112" width="61" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -80,13 +87,17 @@
                                     <action selector="onStitchingSwitchChanged:" destination="9pv-A4-QxB" eventType="valueChanged" id="TWS-Lk-Ql3"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stitching photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JF-9A-POx">
-                                <rect key="frame" x="220" y="464" width="125.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J8X-ts-UuT">
+                                <rect key="frame" x="149.5" y="530" width="76" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Lens Mode">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onLensSelectButtonClicked:" destination="9pv-A4-QxB" eventType="touchUpInside" id="RmC-FE-8Gi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -96,12 +107,14 @@
                             <constraint firstItem="C7a-z0-Iym" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="Fm7-z3-3CQ"/>
                             <constraint firstItem="z4H-Y4-7nE" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="33" id="HWx-lT-liT"/>
                             <constraint firstItem="z4H-Y4-7nE" firstAttribute="bottom" secondItem="C7a-z0-Iym" secondAttribute="top" id="Ldr-Dl-iep"/>
+                            <constraint firstItem="J8X-ts-UuT" firstAttribute="top" secondItem="Kzw-2w-gub" secondAttribute="bottom" constant="8" id="h4G-zF-edQ"/>
                             <constraint firstItem="PEK-fL-fcd" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="hwG-Ex-Kcs"/>
                             <constraint firstItem="oIA-uc-qE6" firstAttribute="top" secondItem="C7a-z0-Iym" secondAttribute="bottom" constant="8" id="iGW-Gs-iQb"/>
                             <constraint firstItem="Kzw-2w-gub" firstAttribute="top" secondItem="u5Q-e6-S5o" secondAttribute="bottom" constant="2" id="iyr-JV-uqC"/>
                             <constraint firstItem="2JF-9A-POx" firstAttribute="leading" secondItem="u5Q-e6-S5o" secondAttribute="trailing" constant="8" id="j28-0f-4ZY"/>
                             <constraint firstItem="Kzw-2w-gub" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="jl2-Vg-JHe"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="25C-Ri-Uh5" secondAttribute="bottom" constant="30" id="mN2-Sv-l1j"/>
+                            <constraint firstItem="J8X-ts-UuT" firstAttribute="centerX" secondItem="Kzw-2w-gub" secondAttribute="centerX" id="nET-0m-zYy"/>
                             <constraint firstItem="2JF-9A-POx" firstAttribute="centerY" secondItem="u5Q-e6-S5o" secondAttribute="centerY" id="nvA-Hy-C7c"/>
                             <constraint firstItem="25C-Ri-Uh5" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="oDk-0f-vD0"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="z4H-Y4-7nE" secondAttribute="trailing" constant="16" id="pv2-5c-irg"/>
@@ -112,6 +125,7 @@
                     <tabBarItem key="tabBarItem" title="Camera" image="first" id="acW-dT-cKf" userLabel="Camera"/>
                     <connections>
                         <outlet property="connectButton" destination="25C-Ri-Uh5" id="och-pK-5pZ"/>
+                        <outlet property="lensSelectButton" destination="J8X-ts-UuT" id="sly-Pl-54C"/>
                         <outlet property="shootButton" destination="Kzw-2w-gub" id="MiA-Mk-VTe"/>
                         <outlet property="stitchingSwitch" destination="u5Q-e6-S5o" id="MeW-1B-bN9"/>
                         <outlet property="storageLabel" destination="oIA-uc-qE6" id="eqM-Ta-8qy"/>
