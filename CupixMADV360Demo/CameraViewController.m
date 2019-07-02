@@ -52,7 +52,7 @@
     [self.glView.glRenderLoop drawJPEG:testJpegPath];
     [self.glView.glRenderLoop setPanoramaMode:PanoramaDisplayModeStereoGraphic];
     //*/
-    [MVCameraDevice getCameraSettings];
+    //[MVCameraDevice getCameraSettings];
 }
 
 -(void) viewDidAppear:(BOOL)animated {

@@ -93,11 +93,30 @@
 		BB84898C2150A56400511AE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3914A820E21D1100DC185D /* LaunchScreen.storyboard */; };
 		BB84898D2150A56400511AE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB3914A620E21D1100DC185D /* Assets.xcassets */; };
 		BB84898E2150A56400511AE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3914A320E21D0E00DC185D /* Main.storyboard */; };
+		BBBA009522CB012E00943F12 /* MADVCamera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3914BC20E237E000DC185D /* MADVCamera.framework */; };
+		BBBA009622CB012E00943F12 /* MADVCamera.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB3914BC20E237E000DC185D /* MADVCamera.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BBBA009822CB013500943F12 /* MADVPano.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3914BD20E237F300DC185D /* MADVPano.framework */; };
+		BBBA009922CB013500943F12 /* MADVPano.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB3914BD20E237F300DC185D /* MADVPano.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BBE5269B215E11D10032BBDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE5269A215E11D00032BBDA /* AppDelegate.swift */; };
 		BBFBF743215E3AFF00EDA879 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE52698215E0F900032BBDA /* CameraViewController.swift */; };
 		D6A796EAA3F42006A4B49D81 /* libPods-CupixMADV360Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A59C0C5C20FF79977520248A /* libPods-CupixMADV360Demo.a */; };
 		DCAFFD1F163A0936B0CF3A4D /* libPods-CupixMADV360Demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A59C0C5C20FF79977520248A /* libPods-CupixMADV360Demo.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BBBA009722CB012F00943F12 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BBBA009922CB013500943F12 /* MADVPano.framework in Embed Frameworks */,
+				BBBA009622CB012E00943F12 /* MADVCamera.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1D8FAA74FB77FC68ED82ABE1 /* Pods-CupixMADV360Demo_MADVPanoSource.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CupixMADV360Demo_MADVPanoSource.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CupixMADV360Demo_MADVPanoSource/Pods-CupixMADV360Demo_MADVPanoSource.debug.xcconfig"; sourceTree = "<group>"; };
@@ -181,7 +200,9 @@
 				BB3914C120E2383600DC185D /* CoreVideo.framework in Frameworks */,
 				BB3914BF20E237F300DC185D /* MADVPano.framework in Frameworks */,
 				D6A796EAA3F42006A4B49D81 /* libPods-CupixMADV360Demo.a in Frameworks */,
+				BBBA009822CB013500943F12 /* MADVPano.framework in Frameworks */,
 				BB3914BE20E237F300DC185D /* MADVCamera.framework in Frameworks */,
+				BBBA009522CB012E00943F12 /* MADVCamera.framework in Frameworks */,
 				DCAFFD1F163A0936B0CF3A4D /* libPods-CupixMADV360Demo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,6 +382,7 @@
 				BB39149320E21D0E00DC185D /* Sources */,
 				BB39149420E21D0E00DC185D /* Frameworks */,
 				BB39149520E21D0E00DC185D /* Resources */,
+				BBBA009722CB012F00943F12 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -730,6 +752,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/**",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -773,6 +796,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/**",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
